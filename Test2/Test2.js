@@ -6,18 +6,22 @@ prints a string instead:
 ● when it is a multiple of both 3 and 7 print “OpenSource” instead of the number.
 **/
 
-const checkCondition = () => {
+function checkCondition() {
   for (let number = 1; number <= 99; number++) {
-    if (number % 3 === 0) {
-      console.log('Open');
-    } else if (number % 7 === 0) {
-      console.log('Source');
-    } else if (number % 3 && number % 7 === 0) {
-      console.log('OpenSource');
-    } else {
-      console.log(number);
+    switch (true) {
+      case number % 3 === 0:
+        console.log('Open');
+        break;
+      case number % 7 === 0:
+        console.log('Source');
+        break;
+      case number % 3 === 0 && number % 7 === 0:
+        console.log('OpenSource');
+      default:
+        console.log(number);
+        break;
     }
   }
-};
+}
 
 checkCondition();
