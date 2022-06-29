@@ -2,21 +2,15 @@
 (https://jsonplaceholder.typicode.com/posts) and returns an object with id = 5.
 */
 
-function getFilterJson() {
-  fetch('https://jsonplaceholder.typicode.com/posts', {
-    method: 'GET',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      let filteredData = data.filter((item) => item.id === 5);
-      console.log(filteredData);
-      return filteredData;
-    })
-    .catch((err) => console.log(err));
+async function getFilterJson() {
+  try {
+    let response = await fetch('https://jsonplaceholder.typicode.com/posts');
+    let data = await response.json();
+    let filteredData = data.filter((item) => item.id === 5);
+    console.log(filteredData);
+  } catch (err) {
+    console.log(err);
+  }
 }
 
 getFilterJson();
